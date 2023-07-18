@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -12,8 +13,11 @@ const firebaseConfig = {
   storageBucket: "linkedin-clone-d16f4.appspot.com",
   messagingSenderId: "537243002090",
   appId: "1:537243002090:web:2ce806b2cca8ce8c206393",
-  measurementId: "G-EHN0H6NKKM"
+  measurementId: "G-EHN0H6NKKM",
 };
 
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+export { auth, app };
