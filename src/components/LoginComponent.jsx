@@ -1,19 +1,26 @@
 import React, { useState } from "react";
-import { LoginAPI } from "../api/AuthAPI";
+import { LoginAPI, GoogleSignInAPI } from "../api/AuthAPI";
 import LinkedInLogo from "../assets/linkedinlogo.png";
 import GoogleLogo from "../assets/google.png";
 import AppleLogo from "../assets/apple.png";
+import {useNavigate} from "react-router-dom";
 import "../Sass/LoginComponent.scss";
+import { toast } from "react-toastify";
 
 export default function LoginComponent() {
+  let navigate=useNavigate();
   const { credentials, setCredentials } = useState({});
   const login = async () => {
     try {
       let res = await LoginAPI(credentials.email, credentials.password);
-      console.log(res?.user);
+      toast.success("Signed In to LinkedIn");
     } catch (err) {
-      console.log(err);
+      toast.error("Something was wrong. Plesase check your Credentials");
     }
+  };
+  const googleSignIn = () => {
+    let response = GoogleSignInAPI();
+    console.log(response);
   };
   return (
     <>
@@ -43,7 +50,7 @@ export default function LoginComponent() {
           </button>
         </div>
         <hr data-content="or" />
-        <button className="google">
+        <button className="google" onClick={googleSignIn}>
           <img src={GoogleLogo} className="googleLogo" />
           Sign in with Google
         </button>
@@ -51,7 +58,9 @@ export default function LoginComponent() {
           <img src={AppleLogo} className="googleLogo" />
           Sign in with Apple
         </button>
-        <p>New to LinedIn? <a href="#">Join now</a></p>
+        <p>
+         New to LinedIn?  <span onClick={()=>navigate('/register')}>Join now</span>
+        </p>
       </div>
     </>
   );

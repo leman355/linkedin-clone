@@ -65,6 +65,7 @@ $linkedincolor: #0077b7;
         }
     }
     hr {
+        margin-top: 15px;
         line-height: 1em;
         position: relative;
         outline: 0;
@@ -111,13 +112,13 @@ $linkedincolor: #0077b7;
             width: 18px;
         }
     }
-    p{
+    p {
+        cursor: context-menu;
         text-align: center;
         margin-top: 10px;
-        a{
-            text-decoration: none;
-    color: $linkedincolor;
-
+        span {
+            color: $linkedincolor;
+            cursor: pointer;
         }
     }
 }
