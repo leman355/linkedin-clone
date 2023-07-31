@@ -3,24 +3,25 @@ import { LoginAPI, GoogleSignInAPI } from "../api/AuthAPI";
 import LinkedInLogo from "../assets/linkedinlogo.png";
 import GoogleLogo from "../assets/google.png";
 import AppleLogo from "../assets/apple.png";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../Sass/LoginComponent.scss";
 import { toast } from "react-toastify";
 
 export default function LoginComponent() {
-  let navigate=useNavigate();
+  let navigate = useNavigate();
   const { credentials, setCredentials } = useState({});
   const login = async () => {
     try {
       let res = await LoginAPI(credentials.email, credentials.password);
       toast.success("Signed In to LinkedIn");
+      navigate("/home");
     } catch (err) {
       toast.error("Something was wrong. Plesase check your Credentials");
     }
   };
   const googleSignIn = () => {
     let response = GoogleSignInAPI();
-    console.log(response);
+    navigate("/home");
   };
   return (
     <>
@@ -59,7 +60,8 @@ export default function LoginComponent() {
           Sign in with Apple
         </button>
         <p>
-         New to LinedIn?  <span onClick={()=>navigate('/register')}>Join now</span>
+          New to LinedIn?{" "}
+          <span onClick={() => navigate("/register")}>Join now</span>
         </p>
       </div>
     </>
