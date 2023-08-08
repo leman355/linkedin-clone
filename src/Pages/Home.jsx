@@ -9,14 +9,15 @@ export default function Home() {
   const [loading,setLoading]=useState(true)
   let navigate = useNavigate();
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (res) => {
-      if (!res?.accessToken) {
-        navigate("/login");
-      } else {
-        setLoading(false)
-      }
-    });
-  }, []);
-  return loading ? <Loader/> : <HomeComponent />;
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (res) => {
+  //     if (!res?.accessToken) {
+  //       navigate("/login");
+  //     } else {
+  //       setLoading(false)
+  //     }
+  //   });
+  // }, []);
+  // return loading ? <Loader/> : <HomeComponent />;
+   return  <HomeComponent />;
 }

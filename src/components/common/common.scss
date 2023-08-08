@@ -1,3 +1,7 @@
+$blue: #0077b7;
+$gray: rgb(0, 0, 0, 0.6);
+$search: #eef3f8;
+
 .loader {
     display: flex;
     justify-content: center;
@@ -11,7 +15,80 @@
     p {
         font-family: system-ui;
         font-weight: bold;
-        color: #0077b7;
+        color: $blue;
         font-size: 25px;
+    }
+}
+
+.topBar {
+    width: 75%;
+    margin: 8px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logoSearch {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 27%;
+        .linkedinLogo {
+            margin: 5px;
+            width: 33px;
+        }
+        .search {
+            position: relative;
+            width: 85%;
+
+            svg {
+                font-size: 13px;
+                position: absolute;
+                top: 32%;
+                left: 3%;
+                color: rgb(85, 85, 85);
+            }
+            input {
+                font-size: 15px;
+                width: 100%;
+                padding: 8px 7px 8px 30px;
+                background-color: $search;
+                border: none;
+                border-radius: 3px;
+            }
+            :focus {
+                caret-color: $blue;
+                color: black;
+                outline: 1px solid $blue;
+            }
+            ::placeholder {
+                color: gray;
+            }
+        }
+    }
+    .icons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: $gray;
+        .iconbox {
+            margin-left: 30px;
+            svg {
+                font-size: 23px;
+                width: 100%;
+                margin: auto;
+            }
+            p {
+                font-size: 14px;
+                text-align: center;
+            }
+        }
+        .iconbox {
+            .userLogo {
+                margin: auto;
+                width: 24px;
+                border: 1px solid black;
+                border-radius: 5mm;
+                overflow: hidden;
+            }
+        }
     }
 }
